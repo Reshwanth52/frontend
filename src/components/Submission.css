@@ -1,0 +1,16 @@
+.Submission_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+    display: block;
+}
+.card{
+    display: block;
+    border: 1px solid black;
+    box-shadow: 5px 10px #888;
+    width: 500px;
+    padding: 30px;
+    margin-top: 40px;
+}
