@@ -1,5 +1,5 @@
 import React,{useContext, useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import './Feedback.css'
 import {UserContext} from '../App'
@@ -9,10 +9,18 @@ const Feedback = () => {
 
   const {state,dispatch} = useContext(UserContext)
 
-    const feedData = (mssg) =>{     
-      axios.post("/sendMssg",{mssg})
-      .then(res=>console.log(res))
-        .catch(err=>console.log(err))
+   const navigate = useNavigate()
+
+    const feedData = (mssg) =>{ 
+      if(state != null || state != undefined){   
+      axios.post("/sendMssg",{mssg: mssg,uuid: state})
+      .then(res=>(navigate("/submissions"), dispatch({type: 'UPDATE', payload:res.data})))
+      // .then(res=>console.log(res.data))
+      .catch(err=>console.log(err))}
+
+      else{
+        alert("Expired !!!")
+      }
     }
 
   return (

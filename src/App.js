@@ -4,7 +4,7 @@ import Feedback from './components/Feedback';
 import Submissions from './components/Submissions';
 import { createContext, useEffect, useReducer, useContext } from 'react';
 import {intialState,reducer} from './components/reducer'
-import uuid from 'react-uuid';
+import axios from 'axios';
 
 export const UserContext =createContext()
 
@@ -14,8 +14,24 @@ const Routing=()=>{
   const {state, dispatch} = useContext(UserContext)
 
   useEffect(()=>{
-    dispatch({type: 'USER', payload: uuid()})
+     sleep()
+  },[state])
+
+  useEffect(()=>{
+    axios.get("/getUUID")
+    .then(id=> dispatch({type: 'USER', payload:id.data}))
+    .catch(err=>console.log(err))
+    
   },[])
+
+ 
+
+  const sleep=()=>{
+    console.log("hi sleep")
+    if(state!= null){
+      setTimeout(()=>{dispatch({type: "CLEAR"})},10000)
+    }
+  }
 
   return(
 
