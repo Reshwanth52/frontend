@@ -12,12 +12,12 @@ const Feedback = () => {
    const navigate = useNavigate()
 
     const feedData = (mssg) =>{ 
-      if(state != null || state != undefined){   
+      if(state != null || state != undefined){  
       axios.post("/sendMssg",{mssg: mssg,uuid: state})
-      .then(res=>(navigate("/submissions"), dispatch({type: 'UPDATE', payload:res.data})))
-      // .then(res=>console.log(res.data))
+      // .then(res=>(navigate("/submissions"), dispatch({type: 'UPDATE', payload:res.data})))
+      .then(navigate('/submissions'))
+      .then(console.log("posted successfully.."))
       .catch(err=>console.log(err))}
-
       else{
         alert("Expired !!!")
       }

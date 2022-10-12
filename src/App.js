@@ -13,9 +13,9 @@ const Routing=()=>{
 
   const {state, dispatch} = useContext(UserContext)
 
-  useEffect(()=>{
-     sleep()
-  },[state])
+  // useEffect(()=>{
+  //    sleep()
+  // },[state])
 
   useEffect(()=>{
     axios.get("/getUUID")
@@ -26,12 +26,12 @@ const Routing=()=>{
 
  
 
-  const sleep=()=>{
-    console.log("hi sleep")
-    if(state!= null){
-      setTimeout(()=>{dispatch({type: "CLEAR"})},10000)
-    }
-  }
+  // const sleep=()=>{
+  //   console.log("hi sleep")
+  //   if(state!= null){
+  //     setTimeout(()=>{dispatch({type: "CLEAR"})},10000)
+  //   }
+  // }
 
   return(
 
