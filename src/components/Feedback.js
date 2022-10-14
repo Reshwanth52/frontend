@@ -11,10 +11,9 @@ const Feedback = () => {
 
    const navigate = useNavigate()
 
-    const feedData = (mssg) =>{ 
+    const feedData = (message) =>{ 
       if(state != null || state != undefined){  
-      axios.post("/sendMssg",{mssg: mssg,uuid: state})
-      // .then(res=>(navigate("/submissions"), dispatch({type: 'UPDATE', payload:res.data})))
+      axios.post("/sendMessage",{message: message,uuid: state})
       .then(navigate('/submissions'))
       .then(console.log("posted successfully.."))
       .catch(err=>console.log(err))}

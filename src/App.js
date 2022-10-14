@@ -13,25 +13,12 @@ const Routing=()=>{
 
   const {state, dispatch} = useContext(UserContext)
 
-  // useEffect(()=>{
-  //    sleep()
-  // },[state])
-
   useEffect(()=>{
     axios.get("/getUUID")
     .then(id=> dispatch({type: 'USER', payload:id.data}))
     .catch(err=>console.log(err))
     
   },[])
-
- 
-
-  // const sleep=()=>{
-  //   console.log("hi sleep")
-  //   if(state!= null){
-  //     setTimeout(()=>{dispatch({type: "CLEAR"})},10000)
-  //   }
-  // }
 
   return(
 

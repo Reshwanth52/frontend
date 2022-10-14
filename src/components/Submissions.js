@@ -10,7 +10,7 @@ const Submissions = () => {
     const {state,dispatch} = useContext(UserContext)
 
     useEffect(()=>{
-        axios.get(`receiveMssg/${state}`)
+        axios.get(`receiveMessage/${state}`)
         .then(res=>setResponse(res))
         .catch(err=>console.log(err))
     },[response])
@@ -18,9 +18,9 @@ const Submissions = () => {
     <div className='Submission_container'>
         <div children='cards'>
             <div className='card'>
-                <p><h6 style={{color:'blue'}}>Your unique ID :</h6> {response?response.data.uuid:""} </p>
+                <p><h6 style={{color:'blue'}}>Your unique ID :</h6> {response?response.data.uuid:"loading..."} </p>
                 <p>
-                   <h6>Your Feedback : {response?response.data.mssg:""} </h6>
+                   <h6 style={{color:'blue'}}>Your Feedback : </h6> {response?response.data.message:"loading..."} 
                 </p>
             </div>
             <Link to='/'><h6>Create a feedback?</h6></Link>
