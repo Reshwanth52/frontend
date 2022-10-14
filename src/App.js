@@ -5,6 +5,7 @@ import Submissions from './components/Submissions';
 import { createContext, useEffect, useReducer, useContext } from 'react';
 import {intialState,reducer} from './components/reducer'
 import axios from 'axios';
+import ExpiredPage from './components/ExpiredPage';
 
 export const UserContext =createContext()
 
@@ -26,6 +27,7 @@ const Routing=()=>{
       <Routes>
         <Route exact path='/' element={<Feedback/>}></Route>
         <Route path='/submissions' element={<Submissions/>}></Route>
+        <Route path='/expiredPage' element={<ExpiredPage/>}></Route>
       </Routes>
     </div>
   )
