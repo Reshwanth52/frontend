@@ -11,20 +11,13 @@ const Feedback = () => {
   const {state,dispatch} = useContext(UserContext)
 
    const navigate = useNavigate()
-    useEffect(() => {
-      try{
-        axios.post("/isValid",new Date())
-      }
-      catch{
-        navigate("/expiredPage")
-      }
-    },[])
+    
     const feedData = (message) =>{ 
       if(state != null || state != undefined){  
       axios.post("/sendMessage",{message: message,uuid: state})
       .then(navigate('/submissions'))
-      .then(console.log("posted successfully.."))
-      .catch(navigate("/expiredPage"))}
+      .catch(err=>console.log(err))
+      .catch(err=>navigate("/expiredPage"))}
       else{
         alert("Expired !!!")
       }
