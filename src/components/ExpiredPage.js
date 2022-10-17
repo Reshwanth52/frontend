@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ExpiredPage = () => {
-  return (
-    <div>ExpiredPage</div>
-  )
-}
+  return <div>ExpiredPage</div>;
+};
 
-export default ExpiredPage
+export default ExpiredPage;
